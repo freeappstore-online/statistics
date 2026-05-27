@@ -1,0 +1,24 @@
+{
+  "name": "freestatisticsapp",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "scripts": {
+    "dev": "pnpm --filter @statistics/web dev",
+    "build": "pnpm --filter @statistics/web build",
+    "preview": "pnpm --filter @statistics/web preview",
+    "typecheck": "pnpm --filter @statistics/web exec tsc -b",
+    "test": "pnpm --filter @statistics/web test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeappstore-online/statistics.git"
+  }
+}
