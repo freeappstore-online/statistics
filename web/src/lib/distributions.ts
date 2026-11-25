@@ -72,13 +72,16 @@ function stdNormalCdf(z: number): number {
   const a5 = 1.061405429;
   const p = 0.3275911;
 
-  const t = 1 / (1 + p * z);
+  // 7.1.26 approximates erf(x); Φ(z) = ½(1 + erf(z/√2)).
+  const x = z / Math.SQRT2;
+  const t = 1 / (1 + p * x);
   const t2 = t * t;
   const t3 = t2 * t;
   const t4 = t3 * t;
   const t5 = t4 * t;
   const poly = a1 * t + a2 * t2 + a3 * t3 + a4 * t4 + a5 * t5;
-  return 1 - poly * Math.exp(-0.5 * z * z);
+  const erf = 1 - poly * Math.exp(-x * x);
+  return 0.5 * (1 + erf);
 }
 
 // ─── Binomial distribution ───────────────────────────────────────────
